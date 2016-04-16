@@ -18,7 +18,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^books/', include('books.urls')),
-    url(r'^users/', include('users.urls')),
-    url(r'^library/', include('library.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^accounts/', include('registration.backends.simple.urls')),
+
 ]
