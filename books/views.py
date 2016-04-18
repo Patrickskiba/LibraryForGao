@@ -15,3 +15,11 @@ def detail(request, id):
     except Book.DoesNotExist:
         raise Http404("Book does not exist")
     return render(request, 'books/detail.html', {'book': book})
+
+def rent(request, id):
+    try:
+        book = Book.objects.get(pk=id)
+        book.checked_out_by = 1
+    except Book.DoesNotExist:
+        raise Http404("Book does not exist")
+    return render(request, 'books/rent.html', {'book': book})
