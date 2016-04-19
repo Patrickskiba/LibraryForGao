@@ -17,7 +17,8 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='book',
             name='checked_out_by',
-            field=models.CharField(default=datetime.datetime(2016, 4, 16, 13, 23, 11, 581920, tzinfo=utc), max_length=250),
+            field=models.CharField(default=datetime.datetime(2016, 4, 16, 13, 23, 11, 581920, tzinfo=utc),
+                                   max_length=250),
             preserve_default=False,
         ),
     ]
