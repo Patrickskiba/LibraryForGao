@@ -72,6 +72,8 @@
       <column name="book_author" sqlType="VARCHAR(150)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
       <column name="book_isbn" sqlType="VARCHAR(100)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
       <column name="checked_out_by" sqlType="VARCHAR(250)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <column name="checked_out_date" sqlType="VARCHAR(250)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
+      <column name="return_date" sqlType="VARCHAR(250)" precision="0" scale="-1" nullable="false" jdbcType="12"/>
       <primary-key columns="id"/>
     </table>
     <table name="django_admin_log" schema="" catalog="" type="TABLE">
