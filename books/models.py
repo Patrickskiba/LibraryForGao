@@ -10,4 +10,4 @@ class Book(models.Model):
     return_date = models.CharField(max_length=250)
 
     def __str__(self):
-        return self.book_author
+        return self.book_title
