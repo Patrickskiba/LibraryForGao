@@ -10,4 +10,7 @@ class Book(models.Model):
     return_date = models.CharField(max_length=250)
 
     def __str__(self):
-        return self.book_title
+        return "{0}, ID={1}".format(self.book_title, self.pk)
+    class Meta:
+         ordering = ['book_title']
+
