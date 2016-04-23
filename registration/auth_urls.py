@@ -24,6 +24,7 @@ necessary to manually include these views.
 
 from django.conf.urls import url
 from django.contrib.auth import views as auth_views
+from registration import views as reg_views
 
 
 urlpatterns = [
@@ -58,4 +59,6 @@ urlpatterns = [
     url(r'^password/reset/done/$',
         auth_views.password_reset_done,
         name='auth_password_reset_done'),
+    url(r'^profile/$',
+        reg_views.profile, name='profile')
 ]

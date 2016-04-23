@@ -1,0 +1,14 @@
+{% if book_list %}
+    <ul>
+    {% for Book in book_list %}
+        <h1>You have {{ Book.book_title }} currently checked out</h1>
+        {% for over in book_list_overdue %}
+            {% if Book.book_title == over.book_title %}
+                <h2 style="color:red;">This book is currently overdue!</h2>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No books are available.</p>
+{% endif %}
