@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import Http404
 from django.shortcuts import render
 from .models import Book
@@ -6,8 +7,19 @@ import datetime
 
 
 def index(request):
-    book_list = list(Book.objects.all())
-    context = {'book_list': book_list}
+    book_list = Book.objects.all()
+    paginator = Paginator(book_list, 25) # Show 25 contacts per page
+    page = request.GET.get('page')
+    try:
+        bookPag = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        bookPag = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        bookPag = paginator.page(paginator.num_pages)
+
+    context = {'book_list': bookPag}
     return render(request, 'books/index.html', context)
 
 
@@ -32,4 +44,6 @@ def rent(request, id):
     except Book.DoesNotExist:
         raise Http404("Book does not exist")
     return render(request, 'books/rent.html', {'book': book})
+
+
 
