@@ -11,6 +11,11 @@ from django.views.generic.edit import FormView
 from registration import signals
 from registration.forms import RegistrationForm
 
+from django.shortcuts import render
+
+from books.models import Book
+
+import datetime
 
 class RegistrationView(FormView):
     """
@@ -108,3 +113,11 @@ class ActivationView(TemplateView):
 
         """
         raise NotImplementedError
+
+
+def profile(request):
+    user = str(request.user)
+    book_list = list(Book.objects.filter(checked_out_by=user))
+    overdue = list(Book.objects.filter(return_date__lt=datetime.datetime.now(), checked_out_by=user))
+    context = {'book_list': book_list, 'book_list_overdue': overdue}
+    return render(request, 'registration/profile.html', context)
