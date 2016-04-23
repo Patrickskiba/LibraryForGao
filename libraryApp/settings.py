@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import djcelery
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -28,6 +29,20 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'libraryforgao@gmail.com'
+EMAIL_HOST_PASSWORD = 'okokokok123'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+
+djcelery.setup_loader()
+BROKER_URL = 'django://'
+CELERY_ALWAYS_EAGER = True
+CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"
+CELERY_ACCEPT_CONTENT = ['pickle', 'json', 'msgpack', 'yaml']
+
+
 
 # Application definition
 
@@ -38,6 +53,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'djcelery',
+    'kombu.transport.django',
     'books',
     'registration'
 ]

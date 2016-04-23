@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Book(models.Model):
     book_title = models.CharField(max_length=250)
     book_author = models.CharField(max_length=150)
@@ -9,5 +8,9 @@ class Book(models.Model):
     checked_out_date = models.CharField(max_length=250)
     return_date = models.CharField(max_length=250)
 
+
     def __str__(self):
-        return self.book_author
+        return "{0}, ID={1}, Checked out by: {2}".format(self.book_title, self.pk, self.checked_out_by)
+    class Meta:
+         ordering = ['book_title']
+

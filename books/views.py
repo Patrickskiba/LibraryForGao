@@ -1,6 +1,5 @@
 from django.http import Http404
 from django.shortcuts import render
-
 from .models import Book
 import datetime
 # ...
@@ -33,3 +32,4 @@ def rent(request, id):
     except Book.DoesNotExist:
         raise Http404("Book does not exist")
     return render(request, 'books/rent.html', {'book': book})
+
