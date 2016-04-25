@@ -1,4 +1,8 @@
 <h1>{{ book.book_title }}</h1>
 <h2>{{ book.book_author }}</h2>
 <h2>{{ book.book_isbn }}</h2>
-<a href="{% url 'books:rent' book.id %}">rent {{ Book.book_title }}</a>
+{% if book.checked_out_by == 'null' %}
+    <a href="{% url 'books:rent' book.id %}">rent {{ Book.book_title }}</a>
+{% else %}
+    <p>This book is currently checked out and should be returned by {{ return_date }}</p>
+{% endif %}

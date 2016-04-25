@@ -7,8 +7,8 @@ import datetime
 
 
 def index(request):
-    book_list = Book.objects.all()
-    paginator = Paginator(book_list, 25) # Show 25 contacts per page
+    book_list = Book.objects.filter(checked_out_by="null").distinct("book_title")
+    paginator = Paginator(book_list, 20) # Show 25 contacts per page
     page = request.GET.get('page')
     try:
         bookPag = paginator.page(page)
@@ -37,13 +37,13 @@ def rent(request, id):
         book.checked_out_by = str(request.user)
 
         now = datetime.datetime.now()
+        print(now)
         book.checked_out_date = now
-        book.return_date = now + datetime.timedelta(days=14)  # rental will last 2 weeks (aka 14 days)
+        book.return_date = (now + datetime.timedelta(days=14))  # rental will last 2 weeks (aka 14 days)
 
         book.save()
     except Book.DoesNotExist:
         raise Http404("Book does not exist")
     return render(request, 'books/rent.html', {'book': book})
-
 
 
