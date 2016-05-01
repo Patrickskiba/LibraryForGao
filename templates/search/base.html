@@ -1,0 +1,90 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <link type="text/css" href="{% static 'books/home.css' %}"/>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <style>
+        label, #id_models {
+            display: none;
+        }
+        body {
+            background-color: white;
+        }
+        body:not(.loaded) #slider img {
+            display:none;
+        }
+
+        .fullHeight {
+            width: 100%;
+            background: url("http://i.imgur.com/3hoye7W.jpg") no-repeat right bottom;
+            background-size: cover;
+            background-repeat:no-repeat;
+            background-color: gray;
+        }
+
+        .navBTN {
+            display: block;
+            font-size: 14px;
+            padding: 8px 14px;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .signup {
+            color: white;
+            border: 1px solid #ffffff;
+            border-radius: 4px;
+            margin-left: 10px;
+            padding: 7px 13px;
+        }
+
+        .login {
+            color: white;
+        }
+
+        .inner {
+            width: 70%; !important;
+        }
+
+        #heading {
+            color: white;
+            font-size: 60px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        #heading2 {
+            color: white;
+            font-size: 25px;
+            text-align: center;
+        }
+
+        .homepagerows {
+            padding-top: 20px;
+        }
+        .form-control {
+            height:33px;
+        }
+        .btn-default {
+            height: 33px;
+        }
+    </style>
+
+</head>
+<body class="home">
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

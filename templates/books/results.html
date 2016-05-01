@@ -1,0 +1,3 @@
+{% for Book in book_search %}
+    <li><a href="{% url 'books:detail' Book.id %}">{{ Book.book_title }}</a></li>
+{% endfor %}

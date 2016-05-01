@@ -20,5 +20,6 @@ urlpatterns = [
     url(r'^books/', include('books.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('registration.backends.simple.urls')),
-
+    url(r'^search/', include('haystack.urls')),
+    url(r'^', include('haystack.urls')),
 ]

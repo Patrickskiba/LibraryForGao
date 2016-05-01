@@ -1,15 +1,24 @@
-<!-- {//% extends "base.html" %} -->
+{% extends "registration/base.html" %}
 {% load i18n %}
 
 {% block content %}
-<form method="post" action=".">
-  {% csrf_token %} 
-  {{ form.as_p }}
+    <a href="/search" class="btn btn-success" style="margin: 10px;">Back to home</a>
+    <div class="container" style="width:30%; margin-top: 10%;">
+        <form method="post" class="form-signin">
+            <h2 class="form-signin-heading">Please sign in</h2>
+            {% csrf_token %}
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input type="text" style="height: 50px; margin: 5px;" id="id_username" name="username" class="form-control" placeholder="Username" required autofocus>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" style="height: 50px; margin: 5px;" id="id_password" name="password" class="form-control" placeholder="Password" required>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>
+            <button style="height: 50px; margin: 5px;" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </form>
+    </div>
 
-  <input type="submit" value="{% trans 'Log in' %}" />
-  <input type="hidden" name="next" value="{{ next }}" />
-</form>
 
-<p>{% trans "Forgot password" %}? <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>!</p>
-<p>{% trans "Not member" %}? <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>!</p>
 {% endblock %}

@@ -119,5 +119,10 @@ def profile(request):
     user = str(request.user)
     book_list = list(Book.objects.filter(checked_out_by=user))
     overdue = list(Book.objects.filter(return_date__lt=datetime.datetime.now(), checked_out_by=user))
+    now = datetime.datetime.now().replace(hour=0).replace(minute=0).replace(second=0).replace(microsecond=0)
+    now = now.strftime('%m/%d/%Y')
+    for LBook in book_list:
+        if LBook.return_date < now:
+            LBook.return_date = LBook.return_date + " -- It is late!!"
     context = {'book_list': book_list, 'book_list_overdue': overdue}
     return render(request, 'registration/profile.html', context)

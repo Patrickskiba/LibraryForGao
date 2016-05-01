@@ -56,7 +56,9 @@ INSTALLED_APPS = [
     'djcelery',
     'kombu.transport.django',
     'books',
-    'registration'
+    'registration',
+    'whoosh',
+    'haystack'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -144,3 +146,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
+    },
+}

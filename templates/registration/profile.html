@@ -1,14 +1,26 @@
+{% extends "registration/base2.html" %}
+{% load i18n %}
+
+{% block content %}
+    <div class="container">
 {% if book_list %}
-    <ul>
+    <h1 style="text-align: center">Your checked out books</h1>
     {% for Book in book_list %}
-        <h1>You have {{ Book.book_title }} currently checked out</h1>
-        {% for over in book_list_overdue %}
-            {% if Book.book_title == over.book_title %}
-                <h2 style="color:red;">This book is currently overdue!</h2>
-            {% endif %}
-        {% endfor %}
+        <div class="row">
+        <div class="col-md-4">
+            <img style="height: 300px;" src="{{ Book.book_img }}"/>
+        </div>
+        <div class="col-md-6">
+            <h3>{{ Book.book_title }} is currently checked out</h3>
+            <h3>The due date is {{ Book.return_date}}</h3>
+        </div>
+        </div>
+        <br/>
+
+
     {% endfor %}
-    </ul>
 {% else %}
-    <p>No books are available.</p>
+    <p>No books are currently checked out by you.</p>
 {% endif %}
+    </div>
+{% endblock %}
