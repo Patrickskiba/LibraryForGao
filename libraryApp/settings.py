@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'libraryforgao@gmail.com'
-EMAIL_HOST_PASSWORD = 'okokokok123'
+EMAIL_HOST_PASSWORD = 'eaten234'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
